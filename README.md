@@ -7,7 +7,6 @@ Convert HTML print documents to PDF thru a lambda functions.
 This is a serverless API with multiple [AWS Lambda](https://www.github.com/serverless-components/aws-lambda) Components for converting HTML files to PDF for printing.
 
 [Learn more about the AWS Lambda Component in its repository.](https://www.github.com/serverless-components/aws-lambda)
-[Learn more about the API Component in its repository.](https://www.github.com/serverless-components/api)
 
 &nbsp;
 
