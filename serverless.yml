@@ -5,81 +5,30 @@ provider:
   runtime: nodejs12.x
   stage: dev
   region: us-east-1
-  apiName: print-conversion
+  apiName: wellsky-print-api
   apiGateway:
-    binaryMediaTypes: # Optional binary media types the API might return
+    binaryMediaTypes:
       - 'application/pdf'
 
 layers:
   chromeAws:
     path: layers
     artifact: chrome_aws_lambda.zip
-    compatibleRuntimes:
-      - nodejs10.x
-      - nodejs12.x
-    allowedAccounts:
-      - '*'
-    description: Layer holds shared resources for Chrome AWS Lambda
+    description: Chromium dependencies
 
 package:
-  individually: true
   exclude:
-    - bin/**
-    - node_modules/**
-    - lib/**
+    - layers/**
 
 functions:
-  phantomjsPrintApi:
-    handler: src/services/phantomjs_print_api.handler
-    events:
-      - http:
-          path: api/v1/print/phantomjs
-          method: get
-          cors: true
-          request:
-            parameters:
-              headers:
-                Accept: "application/pdf"
-    package:
-      include:
-        - bin/phantomjs-linux
-        - lib/rasterize.js
-  wkhtmlPrintApi:
-    handler: src/services/wkhtml_print_api.handler
-    events:
-      - http:
-          path: api/v1/print/wkhtml
-          method: get
-          cors: true
-          request:
-            parameters:
-              headers:
-                Accept: "application/pdf"
-    package:
-      include:
-        - bin/wkhtmltopdf
-        - node_modules/wkhtmltopdf/**
-        - node_modules/slang/**
-        - node_modules/is-stream/**
-        - node_modules/memorystream/**
-  chromiumPrintApi:
-    handler: src/services/chromium_print_api.handler
+  pdfCapture:
+    handler: src/services/pdf_capture_api.handler
     memorySize: 1536
     timeout: 30
     events:
       - http:
-          path: api/v1/print/chromium
+          path: api/v1/pdf/capture
           method: get
           cors: true
-          integration: lambda
-          request:
-            parameters:
-              headers:
-                Accept: "application/pdf"
     layers:
       - { Ref: ChromeAwsLambdaLayer }
-    package:
-      include:
-        - node_modules/**
-        # - node_modules/chrome-aws-lambda/**
-        # - node_modules/lambdafs/**
