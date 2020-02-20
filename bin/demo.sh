@@ -4,7 +4,7 @@ export TEMP_DIR='/tmp'
 export TEMP_FILE_NAME='output.pdf'
 
 # Generate and download file 
-curl -o '${TEMP_DIR}/${TEMP_FILE_NAME}'  --location --request GET '${API_URL}?${DEMO_URL}' --header 'Accept: application/pdf'
+curl -o "${TEMP_DIR}/${TEMP_FILE_NAME}"  --location --request GET "${API_URL}?${DEMO_URL}" --header 'Accept: application/pdf'
 
 # Mac command  open in internet browser
 open output.pdf  
