@@ -18,11 +18,21 @@ This is a serverless API with multiple [AWS Lambda](https://www.github.com/serve
 
 ### 1. Install
 
+**Requirements**   
+Must have [NodeJS](https://nodejs.org/) installed.
+
+**Quick Setup**
+
+```bash
+$ bin/install
+```
+
+**Manual Install**
 Install the [Serverless Framework](https://www.github.com/serverless/serverless):
 
-```console
-$ npm i -g serverless
+```bash
 $ cd serverless-print-conversion
+$ npm i -g serverless
 $ npm install
 ```
 
