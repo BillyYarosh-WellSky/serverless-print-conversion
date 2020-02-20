@@ -44,6 +44,15 @@ $ serverless config credentials --provider aws --key 1234 --secret 5678
 
 Or, you can set these as environment variables manually before deploying.
 
+##Install Jenkins - MAC**
+
+Install the latest LTS version: brew install jenkins-lts
+Install a specific LTS version: brew install jenkins-lts@YOUR_VERSION
+Start the Jenkins service: brew services start jenkins-lts
+Restart the Jenkins service: brew services restart jenkins-lts
+Update the Jenkins version: brew upgrade jenkins-lts
+
+
 ### 2. Deploy
 
 Deploy via the `serverless` command:
