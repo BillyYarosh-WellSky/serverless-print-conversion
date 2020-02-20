@@ -1,0 +1,1 @@
+api_url=https://uwzjz947ok.execute-api.us-east-1.amazonaws.com/dev/api/v1/pdf/capture
