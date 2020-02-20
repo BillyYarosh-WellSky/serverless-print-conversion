@@ -1,4 +1,4 @@
 #!/bin/bash
 
-npm i -g serverless
-npm install
+/usr/local/bin/npm i -g serverless
+i/usr/local/bin/npm install

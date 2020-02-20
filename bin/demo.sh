@@ -1,6 +1,9 @@
 export API_URL='https://uwzjz947ok.execute-api.us-east-1.amazonaws.com/dev/api/v1/pdf/capture'
 export PARAM1=$1
-#export DEMO_URL='https%3A%2F%2Fwww.google.com%2F'
+if [ "${PARAM1}" == "" ]
+then
+	export PARAM1="1"
+fi
 export DEMO_URL="https%3A%2F%2Fwww.google.com%2Fsearch?q=${PARAM1}&tbm=isch"
 export DEMO_URL="https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3D${PARAM1}%26tbm%3Disch"
 echo $DEMO_URL
