@@ -1,6 +1,6 @@
 const chromium = require('chrome-aws-lambda');
 
-module.exports.handler = async (event: any) => {
+module.exports.handler = async (event) => {
   const reqUrl = event.queryStringParameters.url;
   let browser = null;
   console.log("Capturing PDF for URL: " + reqUrl);
