@@ -1,1 +1,1 @@
-https://it1aobyugb.execute-api.us-east-1.amazonaws.com/dev/api/v1/pdf/capture
+https://zk3a83m1cb.execute-api.us-east-1.amazonaws.com/dev/api/v1/pdf/capture
