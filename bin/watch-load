@@ -1,0 +1,2 @@
+watch -n .01 -d watch-tmp-pdf-count 
+

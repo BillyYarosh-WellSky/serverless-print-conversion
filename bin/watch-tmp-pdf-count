@@ -1,0 +1,1 @@
+echo $(ls -tr /tmp/*.pdf | wc -l)

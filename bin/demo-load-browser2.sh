@@ -4,11 +4,10 @@ STARTDIR=$PWD
 
 cd $SCRIPTDIR
 
-export API_URL=$(<"${SCRIPTDIR}/../config/api-url.txt")
+export API_URL=$(<"${SCRIPTDIR}/../config/api-url-dark.txt")
 export API_URL="https://a6yv3j1wtj.execute-api.us-east-1.amazonaws.com/dark/api/v1/pdf/capture"
 echo 
 export PARAM1=$1
-export PARAM2=$2
 if [ "${PARAM1}" == "" ]
 then
 	export PARAM1="1"
@@ -24,10 +23,7 @@ curl -o "${TEMP_DIR}/${TEMP_FILE_NAME}"  --location --request GET "${API_URL}?ur
 #open -n "${TEMP_DIR}/${TEMP_FILE_NAME}"  
 
 
-if [ "${PARAM2}" == "show" ]
-then
         # Mac command to open in Chrome
 	/usr/bin/open -na "/Applications/Google Chrome.app" --args --new-window  "${TEMP_DIR}/${TEMP_FILE_NAME}"
-fi
 
 cd $STARTDIR

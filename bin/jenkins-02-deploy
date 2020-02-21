@@ -1,0 +1,73 @@
+
+cat << EOF
+ __          __         _   _    _____   _              
+ \ \        / /        | | | |  / ____| | |             
+  \ \  /\  / /    ___  | | | | | (___   | | __  _   _   
+   \ \/  \/ /    / _ \ | | | |  \___ \  | |/ / | | | |  
+    \  /\  /    |  __/ | | | |  ____) | |   <  | |_| |  
+     \/  \/      \___| |_| |_| |_____/  |_|\_\  \__, |  
+                                                 __/ |  
+                                                |___/   
+
+  ______                          _____   _______       _______   ______              __  __ 
+ |  ____|     /\         /\      / ____| |__   __|     |__   __| |  ____|     /\     |  \/  |
+ | |__       /  \       /  \    | (___      | |           | |    | |__       /  \    | \  / |
+ |  __|     / /\ \     / /\ \    \___ \     | |           | |    |  __|     / /\ \   | |\/| |
+ | |       / ____ \   / ____ \   ____) |    | |           | |    | |____   / ____ \  | |  | |
+ |_|      /_/    \_\ /_/    \_\ |_____/     |_|           |_|    |______| /_/    \_\ |_|  |_|
+                                                                                             
+                                                                                             
+
+EOF
+        
+
+export app=aws-serverless-print-conversion
+export url=git@github.com:BillyYarosh-WellSky/serverless-print-conversion.git
+export BRANCH_NAME=master
+export PATH=$PATH:/usr/local/bin:.
+
+# build the workspace from git
+if [ -d "./${app}" ]; then
+	echo "Skipping git clone..."
+else
+  mkdir -p "./${app}"
+  git clone -b ${BRANCH_NAME} "${url}" "${app}"
+fi
+
+# update workspace with the latest code from git
+cd "./${app}"
+git pull
+
+
+
+# deploy
+output=$( bin/deploy.sh 2>&1 )
+
+#extract api_url from output
+export line=$( echo "${output}" | grep GET | grep -v "Serverless" )
+export api_url=$(echo $line | cut -d ' ' -f3)
+echo $api_url > ./config/api-url.txt
+
+# check in the api url to git to share with other processes
+if [[ $(git diff --stat) != '' ]]; then
+  git pull
+  git add -A
+  git status
+  git commit -m 'deploy to AWS; checking in new api-url.txt' ./config/api-url.txt
+  git push
+fi
+
+
+cat << EOF
+                                                                                             
+   _____   _    _    _____    _____   ______    _____    _____   _ 
+  / ____| | |  | |  / ____|  / ____| |  ____|  / ____|  / ____| | |
+ | (___   | |  | | | |      | |      | |__    | (___   | (___   | |
+  \___ \  | |  | | | |      | |      |  __|    \___ \   \___ \  | |
+  ____) | | |__| | | |____  | |____  | |____   ____) |  ____) | |_|
+ |_____/   \____/   \_____|  \_____| |______| |_____/  |_____/  (_)
+                                                                   
+                                                                  
+
+EOF
+
