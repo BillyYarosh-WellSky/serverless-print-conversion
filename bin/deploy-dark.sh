@@ -1,2 +1,2 @@
-serverless create_domain
+#serverless create_domain
 serverless deploy --stage dark
