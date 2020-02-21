@@ -19,14 +19,14 @@ layers:
 plugins:
   - serverless-domain-manager
 
-custom:
-  customDomain:
-    domainName: print-conversion.sigma.consoloservices.com
-    basePath: ''
-    stage: ${self:provider.stage}
-    createRoute53Record: true
-    certificateName: '*.sigma.consoloservices.com'
-    certificateArn: 'arn:aws:acm:us-east-1:457294933876:certificate/dc9270d3-76da-47e6-9143-0bb2b34112d8'
+#custom:
+#  customDomain:
+#    domainName: print-conversion.sigma.consoloservices.com
+#    basePath: ''
+#    stage: ${self:provider.stage}
+#    createRoute53Record: true
+#    certificateName: '*.sigma.consoloservices.com'
+#    certificateArn: 'arn:aws:acm:us-east-1:457294933876:certificate/dc9270d3-76da-47e6-9143-0bb2b34112d8'
 
 package:
   exclude:
