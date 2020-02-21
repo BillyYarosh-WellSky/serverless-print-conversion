@@ -16,8 +16,9 @@ layers:
     artifact: chrome_aws_lambda.zip
     description: Chromium dependencies
 
-plugins:
-  - serverless-domain-manager
+# We will be adding a custom domain. Right now we are stuck with dynamic URL's
+#plugins:
+#  - serverless-domain-manager
 
 #custom:
 #  customDomain:
