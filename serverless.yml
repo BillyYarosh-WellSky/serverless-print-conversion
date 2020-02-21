@@ -3,7 +3,7 @@ service: serverlessPrintConversion
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
+  stage: ${opt:stage, 'dev'}
   region: us-east-1
   apiName: wellsky-print-api
   apiGateway:
