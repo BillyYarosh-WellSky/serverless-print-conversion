@@ -20,6 +20,7 @@ layers:
 #plugins:
 #  - serverless-domain-manager
 
+#Please add comment specific to Forcura service.
 #custom:
 #  customDomain:
 #    domainName: print-conversion.sigma.consoloservices.com
